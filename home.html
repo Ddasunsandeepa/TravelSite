@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;600;700;800&family=Roboto&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <style>
+        body {
+	padding: 0;
+	margin: 0;
+}
+
+nav {
+	position: fixed;
+	z-index: 10;
+	left: 0;
+	right: 0;
+	top: 0;
+	font-family: 'Montserrat', sans-serif;
+	padding: 0 5%;
+	height: 80px;
+	background-color: #2e3c50;
+}
+nav .logo {
+	float: left;
+	width: 40%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 24px;
+	color: #fff;
+}
+nav .links {
+	float: right;
+	padding: 0;
+	margin: 0;
+	width: 60%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+nav .links li {
+	list-style: none;
+}
+nav .links a {
+	display: block;
+	padding: 1em;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	text-decoration: none;
+    text-transform: uppercase;
+}
+#nav-toggle {
+	position: absolute;
+	top: -100px;
+}
+nav .icon-burger {
+	display: none;
+	position: absolute;
+	right: 5%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+nav .icon-burger .line {
+	width: 30px;
+	height: 5px;
+	background-color: #fff;
+	margin: 5px;
+	border-radius: 3px;
+	transition: all .3s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+	nav .logo {
+		float: none;
+		width: auto;
+		justify-content: center;
+	}
+	nav .links {
+		float: none;
+		position: fixed;
+		z-index: 9;
+		left: 0;
+		right: 0;
+		top: 100px;
+		bottom: 100%;
+		width: auto;
+		height: auto;
+		flex-direction: column;
+		justify-content: space-evenly;
+		background-color: rgba(0,0,0,.8);
+		overflow: hidden;
+		box-sizing: border-box;
+		transition: all .5s ease-in-out;
+	}
+	nav .links a {
+		font-size: 20px;
+	}
+	nav :checked ~ .links {
+		bottom: 0;
+	}
+	nav .icon-burger {
+		display: block;
+	}
+	nav :checked ~ .icon-burger .line:nth-child(1) {
+		transform: translateY(10px) rotate(225deg);
+	}
+	nav :checked ~ .icon-burger .line:nth-child(3) {
+		transform: translateY(-10px) rotate(-225deg);
+	}
+	nav :checked ~ .icon-burger .line:nth-child(2) {
+		opacity: 0;
+	}
+    #milestone p{color: #ffff;padding-top: 10px;font-size: 15px;}
+
+}
+#milestone{background: linear-gradient(rgba(83, 66, 66, 0.01), rgba(63, 52, 50, 0.9)), url(./img/travel-022.jpg);height: 400px;}
+#milestone .display4,
+#milestone p{color: #ffff;padding-top: 14px;font-size: 15px;}
+.card:hover{background-color: #2e3c50;cursor: pointer;color: white;transform: scale(1.1);}
+
+
+
+.team-member {
+    text-align: center;
+}
+
+.team-member .image{
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.team-member .overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: -10%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.team-member h5 {
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+.team-member .social-icons {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.team-member .social-icons a {
+    width: 40px;
+    height: 40px;
+}
+
+.team-member:hover .social-icons {
+    top: 50%;
+    opacity: 1;
+}
+
+.team-member:hover .overlay {
+    top: 0%;
+    opacity: 1;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+}
+body{
+  min-height: 100vh;
+  width: 100%;
+  background: #EEECEB;
+}
+footer{
+  background: #140B5C;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+footer::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100px;
+  height: 1px;
+  width: 100%;
+  background: #AFAFB6;
+}
+footer .content{
+  max-width: 1250px;
+  margin: auto;
+  padding: 30px 40px 40px 40px;
+}
+footer .content .top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.content .top .logo-details{
+  color: #fff;
+  font-size: 30px;
+}
+.content .top .media-icons{
+  display: flex;
+}
+.content .top .media-icons a{
+  height: 40px;
+  width: 40px;
+  margin: 0 8px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-size: 17px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.top .media-icons a:nth-child(1){
+  background: #4267B2;
+}
+.top .media-icons a:nth-child(1):hover{
+  color: #4267B2;
+  background: #fff;
+}
+.top .media-icons a:nth-child(2){
+  background: #1DA1F2;
+}
+.top .media-icons a:nth-child(2):hover{
+  color: #1DA1F2;
+  background: #fff;
+}
+.top .media-icons a:nth-child(3){
+  background: #E1306C;
+}
+.top .media-icons a:nth-child(3):hover{
+  color: #E1306C;
+  background: #fff;
+}
+.top .media-icons a:nth-child(4){
+  background: #0077B5;
+}
+.top .media-icons a:nth-child(4):hover{
+  color: #0077B5;
+  background: #fff;
+}
+.top .media-icons a:nth-child(5){
+  background: #FF0000;
+}
+.top .media-icons a:nth-child(5):hover{
+  color: #FF0000;
+  background: #fff;
+}
+footer .content .link-boxes{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+footer .content .link-boxes .box{
+  width: calc(100% / 5 - 10px);
+}
+.content .link-boxes .box .link_name{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  position: relative;
+}
+.link-boxes .box .link_name::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 35px;
+  background: #fff;
+}
+.content .link-boxes .box li{
+  margin: 6px 0;
+  list-style: none;
+}
+.content .link-boxes .box li a{
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: all 0.4s ease
+}
+.content .link-boxes .box li a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.content .link-boxes .input-box{
+  margin-right: 55px;
+}
+.link-boxes .input-box input{
+  height: 40px;
+  width: calc(100% + 55px);
+  outline: none;
+  border: 2px solid #AFAFB6;
+  background: #140B5C;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 15px;
+  color: #fff;
+  margin-top: 5px;
+}
+.link-boxes .input-box input::placeholder{
+  color: #AFAFB6;
+  font-size: 16px;
+}
+.link-boxes .input-box input[type="button"]{
+  background: #fff;
+  color: #140B5C;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 4px 0;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.input-box input[type="button"]:hover{
+  opacity: 1;
+}
+footer .bottom-details{
+  width: 100%;
+  background: #0F0844;
+}
+footer .bottom-details .bottom_text{
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a{
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.bottom-details .bottom_text a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.bottom-details .bottom_text a{
+  margin-right: 10px;
+}
+@media (max-width: 900px) {
+  footer .content .link-boxes{
+    flex-wrap: wrap;
+  }
+  footer .content .link-boxes .input-box{
+    width: 40%;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 700px){
+  footer{
+    position: relative;
+  }
+  .content .top .logo-details{
+    font-size: 26px;
+  }
+  .content .top .media-icons a{
+    height: 35px;
+    width: 35px;
+    font-size: 14px;
+    line-height: 35px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 3 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 60%;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+    font-size: 12px;
+  }
+}
+@media (max-width: 520px){
+  footer::before{
+    top: 145px;
+  }
+  footer .content .top{
+    flex-direction: column;
+  }
+  .content .top .media-icons{
+    margin-top: 16px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 2 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 100%;
+  }
+}
+a.active,a:hover{color: tomato;}
+.active1:hover{color: tomato;}
+
+@media only screen and (max-width:767px){
+            .navbar-nav{text-align: center;}
+            .carousel-caption{bottom: 125px;}
+            .carousel-caption h5{font-size: 36px;}
+            .carousel-caption a{padding: 10px 15px;}
+            .carousel-caption p{width: 100%;line-height: 1.6;font-size: 12px;}
+
+        }
+        @media only screen and (min-width:768px) and(max-width:991px){
+            .carousel-caption{bottom:370px ;}
+            .carousel-caption p{width: 100%;}}
+        
+         .section-padding{padding: 100px 0;}   
+        .carousel-item{height: 100vh;min-height: 300px;}
+        .carousel-caption{bottom: 220px;z-index: 2;}
+        .carousel-caption h5{font-size: 45px;text-transform: uppercase;letter-spacing: 2px;margin-top: 25px;}
+        .carousel-caption p{width: 60%;margin: auto;font-size: 16px;line-height: 1.9;}
+        .carousel-inner::before{height: 100%;width: 100%;background: rgba(0, 0, 0, 0.5);content: '';z-index: 1;top: 0;position: absolute;left: 0;}
+.w-100{height: 100vh;}
+
+    </style>
+  </head>
+  <body>
+    <nav>
+        <input id="nav-toggle" type="checkbox">
+        <div class="logo"><strong class="text-warning">TRAVELS</strong></div>
+        <ul class="links">
+            <li><a href="#home" class="active1" style="color: #da5c5c;">Home</a></li>
+            <li><a href="about.html" class="active1">About</a></li>
+            <li><a href="services.html" class="active1">services</a></li>
+            <li><a href="#testimonials" class="active1">Testimonials</a></li>
+            <li><a href="#portflio" class="active1">Portfolio</a></li>
+            <li><a href="contacts.html" class="active1">Contacts</a></li>
+        </ul>
+        <label for="nav-toggle" class="icon-burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </label>
+    </nav>
+    <br><br><br>
+    <div id="carouselExampleCaptions" class="carousel slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./img/main.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption ">
+            <h5>Faithfull</h5>
+            <p>Our quest is to manage business travel and fulfill vacation dreams through our commitment to personalized, world-class service. </p>
+            <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./img/bsr-travel-hero..jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption">
+            <h5>Dedication</h5>
+            <p> As members of the Jay Travel management team, we provide the highest level of travel management in the industry.</p>
+            <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./img/travel-022 (1).jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption ">
+            <h5>Your Dream </h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat repellendus maxime ab aspernatur officia?</p>
+            <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 style="color: tomato; text-align: center;">TOP DESTINATIONS</h2>
+        </div>
+    </div>
+   </div><br>
+   <section class="country">
+   <div class="row row-cols-1 row-cols-md-5 g-4">
+    <div class="col">
+      <div class="card" style="border: none;box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.1);transition: 0.6s;">
+         <img src="./img/Switzerland.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+          <p style="display: flex;align-items: center;justify-content: center;"><a href="SWITZERLAND.html" class="btn btn-warning mt-3">Learn More</a></p>
+             <h5 class="card-title text-center" style="color: rgb(161, 140, 18);">SWITZERLAND</h5>
+          </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="border: none;box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.1);transition: 0.6s;">
+        <img src="./img/sl1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p style="display: flex;align-items: center;justify-content: center;"><a href="SRILANAK.html" class="btn btn-warning mt-3">Learn More</a></p>
+          <h5 class="card-title text-center" style="color: rgb(161, 140, 18);">SRI LANKA</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="border: none;box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.1);transition: 0.6s;">
+        <img src="./img/rome-italy.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p style="display: flex;align-items: center;justify-content: center;"><a href="SWITZERLAND.html" class="btn btn-warning mt-3">Learn More</a></p>
+          <h5 class="card-title text-center" style="color: rgb(161, 140, 18);">ROME</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="border: none;box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.1);transition: 0.6s;">
+        <img src="./img/1300x820 (1).jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p style="display: flex;align-items: center;justify-content: center;"><a href="SWITZERLAND.html" class="btn btn-warning mt-3">Learn More</a></p>
+          <h5 class="card-title text-center" style="color: rgb(161, 140, 18);">THAILAND</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+        <div class="card" style="border: none;box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.1);transition: 0.6s;">
+          <img src="./img/Maldives.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p style="display: flex;align-items: center;justify-content: center;"><a href="SWITZERLAND.html" class="btn btn-warning mt-3">Learn More</a></p>
+            <h5 class="card-title text-center" style="color: rgb(161, 140, 18);">MALDIVES</h5>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+<br><br>   
+<section>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 style="text-align: center;color: tomato;">OUR TEAM LEADS</h2>
+            <p class="text-center" style="font-weight: bold;">Team work is ability to work together toward a comman vision.The ability to direct individual <br> accomplishments toward organizational objectives.It is fuel that allows common <br> people to attain uncomman results.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-8">
+            <div class="team-member">
+                <div class="image">
+                    <img src="img/Hugo Silva.jpg" alt="">
+                    <div class="social-icons" style="font-size: 36px;">
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-pinterest'></i></a>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+                <div style="box-shadow: 12px 12px 10px;">
+                <h5>Hugo Silva</h5>
+                <p>Marketing Coordinator</p>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-8">
+            <div class="team-member">
+                <div class="image">
+                    <img src="img/Imanoli Arias.jpg" alt="">
+                    <div class="social-icons" style="font-size: 36px;">
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-pinterest'></i></a>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+                <div style="box-shadow: 12px 12px 10px;">
+                <h5>Imanoli Arias</h5>
+                <p>Head of Finance</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-8">
+            <div class="team-member">
+                <div class="image">
+                    <img src="img/Javier Bardem.jpg" alt="">
+                    <div class="social-icons" style="font-size: 36px;">
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-pinterest'></i></a>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+                 <div style="box-shadow: 12px 12px 10px;">
+                    <h5 >Javier Bardem</h5>
+                    <p>Software Developer</p>
+                  </div>
+            </div>
+        </div>
+    </div>
+   </div><br><br>
+</section>
+<section id="milestone" class="milestone section-padding p-5 text-center bg-cover" style="box-shadow: 15px 15px 10px rgba(0,0,0,.15);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="display-4" style="font-family:dancing script;color: rgb(255, 196, 0);">250k +</div>
+                <p class="mb-0">HAPPY CLIENTS</p>
+            </div>
+            <div class="col-lg-3 col-sm-6 ">
+                <div class="display-4" style="font-family: dancing script;color: rgb(255, 196, 0);">800</div>
+                <p class="mb-0">WEEKLY RESERVATIONS</p>
+            </div>
+            <div class="col-lg-3 col-sm-6 ">
+                <div class="display-4" style="font-family: dancing script;color: rgb(255, 196, 0);">150</div>
+                <p class="mb-0">TRAVEL PARTNERS</p>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="display-4" style="font-family: dancing script;color: rgb(255, 196, 0);">15</div>
+                <p class="mb-0">BRANCHERS</p>
+            </div>
+        </div>        
+    </div>        
+</section>
+<br><br>
+<section class="trvellers">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 style="color: tomato;text-align: center;">OVERHEAD FROM TRAVELERS</h2>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card" style="border-bottom: 3px solid blue;transition: all 0.7s;">
+                <div class="card-body">
+                  <h5 class="card-title text-center" style="color: rgb(18, 137, 211);font-weight: 600;">Hotel Eucalyptus</h5>
+                  <h6 class="text-center" style="color: rgb(150, 147, 147);">In Greece</h6>
+                  <p class="card-text text-center">"We booked Hotel Eucalyptus through Jay after reading a handful of reviews ,and it was easily the best decision we made <br> <span><a href="#" style="text-decoration: none;">   ...more</a></span> "</p>
+                  <p class="text-center">-Joyce from Canada</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style="border-bottom: 3px solid blue;transition: all 0.7s;">
+                <div class="card-body">
+                  <h5 class="card-title text-center" style="color: rgb(18, 137, 211);font-weight: 600;">Holiday Inn Resort Batam</h5>
+                  <h6 class="text-center" style="color: rgb(150, 147, 147);">In Indonesia</h6>
+                  <p class="card-text text-center"> "Thanks Jay for letting me change room without charge and rebate the differance.Nice staffs Agoda and Holiday Inn!"</p>
+                  <p class="text-center" style="padding-top: 22px;">-Andy from Singapore</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style="border-bottom: 3px solid blue;transition: all 0.7s;">
+                <div class="card-body">
+                  <h5 class="card-title text-center" style="color: rgb(18, 137, 211);font-weight: 600;">Hotel Granvia Kyoto</h5>
+                  <h6 class="text-center" style="color: rgb(150, 147, 147);">In Japan</h6>
+                  <p class="card-text text-center">"Our famaily was travelling via bullet train between cities in Japan with our luggage - the location for this hotel made that <br> <a href="#" style="text-decoration: none;"> ...more</a> "</p>
+                  <p class="text-center">-Diane from the United States</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+<br><br>
+
+
+<section id="contact" class="contact section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header text-center pb-5">
+                    <h2 style="color: tomato;">Contact Us</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0">
+            <div class="col-md-12 p-0 pt-4 p-4 m-auto">
+                <form action="#" class="bg-light p-4.m-auto" >
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="mb-3" style="border: 2px solid goldenrod;border-radius: 9px;">
+                                <input type="text" class="form-control" required placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3" style="border: 2px solid goldenrod;border-radius: 9px;">
+                                <input type="text" class="form-control" required placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3" style="border: 2px solid goldenrod;border-radius: 9px;">
+                                <input type="email" class="form-control" required placeholder="Your Email Here">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3" style="border: 2px solid goldenrod;border-radius: 9px;">
+                                <input type="phone-number" class="form-control" required placeholder="Phone Number">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3" style="border: 2px solid goldenrod;border-radius: 9px;">
+                                <textarea rows="5" required class="form-control" placeholder="Your Quary Here"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <input type="checkbox" style="border: 3px solid black;"> <h5>Subscribe to our newsletter</h5>
+                        </div>
+                        <button class="btn btn-warning btn-lg btn-block mt-3">Send Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </section>
+    <br>
+       <section>
+          <footer>
+            <div class="content">
+              <div class="top">
+                <div class="logo-details">
+                  <i class="fab fa-slack"></i>
+                  <span class="logo_name">JAYTRAVEL</span>
+                </div>
+                <div class="media-icons">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+              </div>
+              <div class="link-boxes">
+                <ul class="box">
+                  <li class="link_name">Company</li>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Contact us</a></li>
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Get started</a></li>
+                  <li><a href="#">Feedback</a></li>
+                  <li><a href="#">Testimonials</a></li>
+
+                </ul>
+                <ul class="box text-left">
+                  <li class="link_name">Services</li>
+                  <li><a href="#">10/A , Colombo 10 , <br> Sri Lanka</a></li>
+                  <li><a href="#"><i class="fa-solid fa-phone-volume" style="padding-right: 9px;"></i>011-2771234 <br> +94-0712345656</a></li>
+                  <li><a href="#"><i class="fa-solid fa-envelope fa" style="padding-right: 9px;"></i>JayTravel@gmail.com</a></li>
+                </ul>
+                <ul class="box">
+                  <li class="link_name">Account</li>
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">My account</a></li>
+                  <li><a href="#">Prefrences</a></li>
+                  <li><a href="#">Purchase</a></li>
+                </ul>
+                <ul class="box">
+                  <li class="link_name">Countries</li>
+                  <li><a href="#">Sri Lanka</a></li>
+                  <li><a href="#">Rome</a></li>
+                  <li><a href="#">Switzerland</a></li>
+                  <li><a href="#">Thailand</a></li>
+                  <li><a href="#">Maldives</a></li>
+
+                </ul>
+                <ul class="box input-box">
+                  <li class="link_name">Subscribe</li>
+                  <li><input type="text" placeholder="Enter your email"></li>
+                  <li><input type="button" value="Subscribe"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="bottom-details">
+              <div class="bottom_text">
+                <span class="copyright_text">Copyright © 2021 <a href="#">JayTravel.</a>All rights reserved</span>
+                <span class="policy_terms">
+                  <a href="#">Privacy policy</a>
+                  <a href="#">Terms & condition</a>
+                </span>
+              </div>
+            </div>
+          </footer>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+  </body>
+</html>

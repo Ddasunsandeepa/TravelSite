@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      nav {
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        right: 0;
+        top: 0;
+        font-family: "Montserrat", sans-serif;
+        padding: 0 5%;
+        height: 80px;
+        background-color: #2e3c50;
+      }
+      nav .logo {
+        float: left;
+        width: 40%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        color: #fff;
+      }
+      nav .links {
+        float: right;
+        padding: 0;
+        margin: 0;
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      nav .links li {
+        list-style: none;
+      }
+      nav .links a {
+        display: block;
+        padding: 1em;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+      #nav-toggle {
+        position: absolute;
+        top: -100px;
+      }
+      nav .icon-burger {
+        display: none;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      nav .icon-burger .line {
+        width: 30px;
+        height: 5px;
+        background-color: #fff;
+        margin: 5px;
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+      }
+      @media screen and (max-width: 768px) {
+        nav .logo {
+          float: none;
+          width: auto;
+          justify-content: center;
+        }
+        nav .links {
+          float: none;
+          position: fixed;
+          z-index: 9;
+          left: 0;
+          right: 0;
+          top: 100px;
+          bottom: 100%;
+          width: auto;
+          height: auto;
+          flex-direction: column;
+          justify-content: space-evenly;
+          background-color: rgba(0, 0, 0, 0.8);
+          overflow: hidden;
+          box-sizing: border-box;
+          transition: all 0.5s ease-in-out;
+        }
+        nav .links a {
+          font-size: 20px;
+        }
+        nav :checked ~ .links {
+          bottom: 0;
+        }
+        nav .icon-burger {
+          display: block;
+        }
+        nav :checked ~ .icon-burger .line:nth-child(1) {
+          transform: translateY(10px) rotate(225deg);
+        }
+        nav :checked ~ .icon-burger .line:nth-child(3) {
+          transform: translateY(-10px) rotate(-225deg);
+        }
+        nav :checked ~ .icon-burger .line:nth-child(2) {
+          opacity: 0;
+        }
+      }
+      a.active,
+      a:hover {
+        color: tomato;
+      }
+      .active1:hover {
+        color: tomato;
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        width: 100%;
+        background: #eeeceb;
+      }
+      footer {
+        background: #140b5c;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+      }
+      footer::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 100px;
+        height: 1px;
+        width: 100%;
+        background: #afafb6;
+      }
+      footer .content {
+        max-width: 1250px;
+        margin: auto;
+        padding: 30px 40px 40px 40px;
+      }
+      footer .content .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 50px;
+      }
+      .content .top .logo-details {
+        color: #fff;
+        font-size: 30px;
+      }
+      .content .top .media-icons {
+        display: flex;
+      }
+      .content .top .media-icons a {
+        height: 40px;
+        width: 40px;
+        margin: 0 8px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+        font-size: 17px;
+        text-decoration: none;
+        transition: all 0.4s ease;
+      }
+      .top .media-icons a:nth-child(1) {
+        background: #4267b2;
+      }
+      .top .media-icons a:nth-child(1):hover {
+        color: #4267b2;
+        background: #fff;
+      }
+      .top .media-icons a:nth-child(2) {
+        background: #1da1f2;
+      }
+      .top .media-icons a:nth-child(2):hover {
+        color: #1da1f2;
+        background: #fff;
+      }
+      .top .media-icons a:nth-child(3) {
+        background: #e1306c;
+      }
+      .top .media-icons a:nth-child(3):hover {
+        color: #e1306c;
+        background: #fff;
+      }
+      .top .media-icons a:nth-child(4) {
+        background: #0077b5;
+      }
+      .top .media-icons a:nth-child(4):hover {
+        color: #0077b5;
+        background: #fff;
+      }
+      .top .media-icons a:nth-child(5) {
+        background: #ff0000;
+      }
+      .top .media-icons a:nth-child(5):hover {
+        color: #ff0000;
+        background: #fff;
+      }
+      footer .content .link-boxes {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      footer .content .link-boxes .box {
+        width: calc(100% / 5 - 10px);
+      }
+      .content .link-boxes .box .link_name {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        position: relative;
+      }
+      .link-boxes .box .link_name::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        height: 2px;
+        width: 35px;
+        background: #fff;
+      }
+      .content .link-boxes .box li {
+        margin: 6px 0;
+        list-style: none;
+      }
+      .content .link-boxes .box li a {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        text-decoration: none;
+        opacity: 0.8;
+        transition: all 0.4s ease;
+      }
+      .content .link-boxes .box li a:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+      .content .link-boxes .input-box {
+        margin-right: 55px;
+      }
+      .link-boxes .input-box input {
+        height: 40px;
+        width: calc(100% + 55px);
+        outline: none;
+        border: 2px solid #afafb6;
+        background: #140b5c;
+        border-radius: 4px;
+        padding: 0 15px;
+        font-size: 15px;
+        color: #fff;
+        margin-top: 5px;
+      }
+      .link-boxes .input-box input::placeholder {
+        color: #afafb6;
+        font-size: 16px;
+      }
+      .link-boxes .input-box input[type="button"] {
+        background: #fff;
+        color: #140b5c;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        margin: 4px 0;
+        opacity: 0.8;
+        cursor: pointer;
+        transition: all 0.4s ease;
+      }
+      .input-box input[type="button"]:hover {
+        opacity: 1;
+      }
+      footer .bottom-details {
+        width: 100%;
+        background: #0f0844;
+      }
+      footer .bottom-details .bottom_text {
+        max-width: 1250px;
+        margin: auto;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .bottom-details .bottom_text span,
+      .bottom-details .bottom_text a {
+        font-size: 14px;
+        font-weight: 300;
+        color: #fff;
+        opacity: 0.8;
+        text-decoration: none;
+      }
+      .bottom-details .bottom_text a:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+      .bottom-details .bottom_text a {
+        margin-right: 10px;
+      }
+      @media (max-width: 900px) {
+        footer .content .link-boxes {
+          flex-wrap: wrap;
+        }
+        footer .content .link-boxes .input-box {
+          width: 40%;
+          margin-top: 10px;
+        }
+      }
+      @media (max-width: 700px) {
+        footer {
+          position: relative;
+        }
+        .content .top .logo-details {
+          font-size: 26px;
+        }
+        .content .top .media-icons a {
+          height: 35px;
+          width: 35px;
+          font-size: 14px;
+          line-height: 35px;
+        }
+        footer .content .link-boxes .box {
+          width: calc(100% / 3 - 10px);
+        }
+        footer .content .link-boxes .input-box {
+          width: 60%;
+        }
+        .bottom-details .bottom_text span,
+        .bottom-details .bottom_text a {
+          font-size: 12px;
+        }
+      }
+      @media (max-width: 520px) {
+        footer::before {
+          top: 145px;
+        }
+        footer .content .top {
+          flex-direction: column;
+        }
+        .content .top .media-icons {
+          margin-top: 16px;
+        }
+        footer .content .link-boxes .box {
+          width: calc(100% / 2 - 10px);
+        }
+        footer .content .link-boxes .input-box {
+          width: 100%;
+        }
+      }
+
+      a.active,
+      a.active1:hover {
+        color: #da5c5c;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <input id="nav-toggle" type="checkbox" />
+      <div class="logo"><strong class="text-warning">TRAVELS</strong></div>
+      <ul class="links">
+        <li><a href="home.html" class="active1">Home</a></li>
+        <li><a href="about.html" class="active1">About</a></li>
+        <li>
+          <a href="services.html" class="active" style="color: #da5c5c"
+            >services</a
+          >
+        </li>
+        <li><a href="#testimonials" class="active1">Testimonials</a></li>
+        <li><a href="#portflio" class="active1">Portfolio</a></li>
+        <li><a href="contacts.html" class="active1">Contacts</a></li>
+      </ul>
+      <label for="nav-toggle" class="icon-burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
+    </nav>
+    <br /><br /><br /><br /><br />
+    <br />
+
+    <section class="section service" aria-labelledby="service-label">
+      <div class="container">
+        <h2
+          class="h2 section-title"
+          style="color: rgb(136, 122, 42); text-align: center"
+        >
+          The service we offer is specifically designed to meet your needs.
+        </h2>
+      </div>
+      >
+    </section>
+    <br />
+    <section>
+      <div class="row row-cols-1 row-cols-md-4 g-4" style="border: none">
+        <div class="col">
+          <div
+            class="card bg-dark"
+            style="box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.7)"
+          >
+            <img src="./img/download (1).jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title text-light">24/7 Support</h5>
+              <p class="card-text text-light">
+                Nulla vitae elit libero, a pharetra augue. Donec id elit non mi
+                porta gravida at eget metus cras justo.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div
+            class="card bg-dark"
+            style="box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.7)"
+          >
+            <img src="./img/xcv.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title text-light">Secure Payments</h5>
+              <p class="card-text text-light">
+                Nulla vitae elit libero, a pharetra augue. Donec id elit non mi
+                porta gravida at eget metus cras justo.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div
+            class="card bg-dark"
+            style="box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.7)"
+          >
+            <img src="./img/123.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title text-light">Daily Updates</h5>
+              <p class="card-text text-light">
+                Nulla vitae elit libero, a pharetra augue. Donec id elit non mi
+                porta gravida at eget metus cras justo.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div
+            class="card bg-dark"
+            style="box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.7)"
+          >
+            <img src="./img/nm.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title text-light">Market Research</h5>
+              <p class="card-text text-light">
+                Nulla vitae elit libero, a pharetra augue. Donec id elit non mi
+                porta gravida at eget metus cras justo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br /><br />
+    <section>
+      <footer>
+        <div class="content">
+          <div class="top">
+            <div class="logo-details">
+              <i class="fab fa-slack"></i>
+              <span class="logo_name">TRAVELS</span>
+            </div>
+            <div class="media-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="link-boxes">
+            <ul class="box">
+              <li class="link_name">Company</li>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Get started</a></li>
+              <li><a href="#">Feedback</a></li>
+              <li><a href="#">Testimonials</a></li>
+            </ul>
+            <ul class="box text-left">
+              <li class="link_name">Services</li>
+              <li>
+                <a href="#"
+                  >10/A , Colombo 10 , <br />
+                  Sri Lanka</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i
+                    class="fa-solid fa-phone-volume"
+                    style="padding-right: 9px"
+                  ></i
+                  >011-2771234 <br />
+                  +94-0712345656</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i
+                    class="fa-solid fa-envelope fa"
+                    style="padding-right: 9px"
+                  ></i
+                  >TRAVELS@gmail.com</a
+                >
+              </li>
+            </ul>
+            <ul class="box">
+              <li class="link_name">Account</li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">My account</a></li>
+              <li><a href="#">Prefrences</a></li>
+              <li><a href="#">Purchase</a></li>
+            </ul>
+            <ul class="box">
+              <li class="link_name">Countries</li>
+              <li><a href="#">Sri Lanka</a></li>
+              <li><a href="#">Rome</a></li>
+              <li><a href="#">Switzerland</a></li>
+              <li><a href="#">Thailand</a></li>
+              <li><a href="#">Maldives</a></li>
+            </ul>
+            <ul class="box input-box">
+              <li class="link_name">Subscribe</li>
+              <li><input type="text" placeholder="Enter your email" /></li>
+              <li><input type="button" value="Subscribe" /></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom-details">
+          <div class="bottom_text">
+            <span class="copyright_text"
+              >Copyright © 2021 <a href="#">TRAVELS.</a>All rights
+              reserved</span
+            >
+            <span class="policy_terms">
+              <a href="#">Privacy policy</a>
+              <a href="#">Terms & condition</a>
+            </span>
+          </div>
+        </div>
+      </footer>
+    </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+      integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+      integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
